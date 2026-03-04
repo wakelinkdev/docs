@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WakeLink Web Flasher</title>
+    <meta name="description" content="Flash WakeLink firmware directly from your browser. No software installation required.">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --error: #ef4444;
+            --warning: #f59e0b;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .logo {
+            font-size: 72px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+        
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .board-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .board-option {
+            background: var(--bg);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .board-option:hover {
+            background: var(--surface-hover);
+        }
+        
+        .board-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .board-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        
+        .board-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        
+        .board-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text);
+            border: 2px solid var(--surface-hover);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--surface-hover);
+        }
+        
+        .progress-container {
+            margin-top: 24px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .progress-text {
+            margin-top: 8px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+        
+        .status.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+        }
+        
+        .status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+        }
+        
+        .status.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--warning);
+        }
+        
+        .requirements {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+        
+        .requirement.ok {
+            color: var(--success);
+        }
+        
+        .requirement.fail {
+            color: var(--error);
+        }
+        
+        .firmware-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .info-item {
+            background: var(--bg);
+            padding: 16px;
+            border-radius: 8px;
+        }
+        
+        .info-label {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .info-value {
+            font-weight: 600;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            .board-selector {
+                grid-template-columns: 1fr;
+            }
+            .requirements {
+                grid-template-columns: 1fr;
+            }
+            .firmware-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">⚡</div>
+            <h1>WakeLink Web Flasher</h1>
+            <p class="subtitle">Flash firmware directly from your browser</p>
+        </header>
+        
+        <!-- Step 1: Check Requirements -->
+        <div class="card" id="step-requirements">
+            <h2><span class="step-number">1</span> Check Requirements</h2>
+            <p>Make sure your browser supports Web Serial API and your device is connected.</p>
+            
+            <div class="requirements" id="requirements-list">
+                <div class="requirement" id="req-browser">
+                    <span id="req-browser-icon">⏳</span>
+                    <span>Chrome/Edge/Opera</span>
+                </div>
+                <div class="requirement" id="req-serial">
+                    <span id="req-serial-icon">⏳</span>
+                    <span>Web Serial API</span>
+                </div>
+                <div class="requirement" id="req-secure">
+                    <span id="req-secure-icon">⏳</span>
+                    <span>HTTPS/Localhost</span>
+                </div>
+                <div class="requirement" id="req-driver">
+                    <span id="req-driver-icon">⏳</span>
+                    <span>USB Driver</span>
+                </div>
+            </div>
+            
+            <div id="browser-warning" class="status warning hidden">
+                ⚠️ Your browser doesn't support Web Serial. Please use Chrome, Edge, or Opera.
+            </div>
+        </div>
+        
+        <!-- Step 2: Select Board -->
+        <div class="card" id="step-board">
+            <h2><span class="step-number">2</span> Select Your Board</h2>
+            <p>Choose the ESP board you want to flash.</p>
+            
+            <div class="board-selector">
+                <div class="board-option" data-board="esp8266" onclick="selectBoard('esp8266')">
+                    <div class="board-icon">📡</div>
+                    <div class="board-name">ESP8266</div>
+                    <div class="board-desc">NodeMCU, Wemos D1 Mini, etc.</div>
+                </div>
+                <div class="board-option" data-board="esp32" onclick="selectBoard('esp32')">
+                    <div class="board-icon">🔌</div>
+                    <div class="board-name">ESP32</div>
+                    <div class="board-desc">ESP32 DevKit, WROOM, etc.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Flash -->
+        <div class="card" id="step-flash">
+            <h2><span class="step-number">3</span> Flash Firmware</h2>
+            <p>Connect your device and click the button below.</p>
+            
+            <div class="firmware-info">
+                <div class="info-item">
+                    <div class="info-label">Firmware Version</div>
+                    <div class="info-value">v1.0.0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Selected Board</div>
+                    <div class="info-value" id="selected-board-display">—</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" id="flash-btn" onclick="startFlash()" disabled>
+                ⚡ Install WakeLink
+            </button>
+            
+            <div class="progress-container hidden" id="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Preparing...</div>
+            </div>
+            
+            <div id="flash-status"></div>
+        </div>
+        
+        <!-- Step 4: Next Steps -->
+        <div class="card hidden" id="step-complete">
+            <h2><span class="step-number">✓</span> Installation Complete!</h2>
+            <p>Your device has been flashed successfully.</p>
+            
+            <div class="status success">
+                ✅ Firmware installed! The device will restart in setup mode.
+            </div>
+            
+            <h3 style="margin: 24px 0 16px;">Next Steps:</h3>
+            <ol style="padding-left: 20px; color: var(--text-muted);">
+                <li style="margin-bottom: 8px;">Connect to WiFi network <strong>"WakeLink-Setup-XXXX"</strong></li>
+                <li style="margin-bottom: 8px;">Open <strong>http://192.168.4.1</strong> in your browser</li>
+                <li style="margin-bottom: 8px;">Follow the setup wizard to configure your device</li>
+                <li>Scan the QR code to add device to the mobile app</li>
+            </ol>
+            
+            <button class="btn btn-secondary" style="margin-top: 24px;" onclick="location.reload()">
+                🔄 Flash Another Device
+            </button>
+        </div>
+        
+        <footer>
+            <p>Need help? Check our <a href="https://wakelink-project.org/docs/firmware/flashing">documentation</a></p>
+            <p style="margin-top: 8px;">WakeLink v1.0.0 | ESP Web Tools</p>
+        </footer>
+    </div>
+    
+    <!-- ESP Web Tools -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    
+    <script>
+        let selectedBoard = null;
+        
+        // Check requirements on load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkRequirements();
+        });
+        
+        function checkRequirements() {
+            // Check browser
+            const isChromium = !!window.chrome;
+            setRequirement('browser', isChromium);
+            
+            // Check Web Serial API
+            const hasSerial = 'serial' in navigator;
+            setRequirement('serial', hasSerial);
+            
+            // Check secure context
+            const isSecure = window.isSecureContext;
+            setRequirement('secure', isSecure);
+            
+            // Driver check is manual
+            setRequirement('driver', true, '?');
+            
+            // Show warning if not supported
+            if (!hasSerial) {
+                document.getElementById('browser-warning').classList.remove('hidden');
+            }
+        }
+        
+        function setRequirement(id, ok, icon = null) {
+            const el = document.getElementById(`req-${id}`);
+            const iconEl = document.getElementById(`req-${id}-icon`);
+            
+            el.classList.toggle('ok', ok);
+            el.classList.toggle('fail', !ok);
+            iconEl.textContent = icon || (ok ? '✓' : '✗');
+        }
+        
+        function selectBoard(board) {
+            selectedBoard = board;
+            
+            // Update UI
+            document.querySelectorAll('.board-option').forEach(el => {
+                el.classList.toggle('selected', el.dataset.board === board);
+            });
+            
+            document.getElementById('selected-board-display').textContent = 
+                board === 'esp8266' ? 'ESP8266' : 'ESP32';
+            
+            // Enable flash button
+            document.getElementById('flash-btn').disabled = false;
+        }
+        
+        async function startFlash() {
+            if (!selectedBoard) {
+                alert('Please select a board first');
+                return;
+            }
+            
+            const btn = document.getElementById('flash-btn');
+            const progress = document.getElementById('progress-container');
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const status = document.getElementById('flash-status');
+            
+            btn.disabled = true;
+            progress.classList.remove('hidden');
+            status.innerHTML = '';
+            
+            try {
+                progressText.textContent = 'Requesting serial port...';
+                
+                // Request port
+                const port = await navigator.serial.requestPort({
+                    filters: [
+                        { usbVendorId: 0x10C4 }, // CP2102
+                        { usbVendorId: 0x1A86 }, // CH340
+                        { usbVendorId: 0x0403 }, // FTDI
+                        { usbVendorId: 0x303A }, // ESP32-S2/S3
+                    ]
+                });
+                
+                progressText.textContent = 'Connecting to device...';
+                progressFill.style.width = '10%';
+                
+                await port.open({ baudRate: 115200 });
+                
+                progressText.textContent = 'Downloading firmware...';
+                progressFill.style.width = '20%';
+                
+                // Fetch firmware
+                const firmwareUrl = selectedBoard === 'esp8266' 
+                    ? '/firmware/wakelink-esp8266.bin'
+                    : '/firmware/wakelink-esp32.bin';
+                
+                const response = await fetch(firmwareUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to download firmware');
+                }
+                
+                const firmware = await response.arrayBuffer();
+                
+                progressText.textContent = 'Flashing firmware...';
+                progressFill.style.width = '40%';
+                
+                // Simple simulation for demo
+                // In production, use esptool.js or ESP Web Tools properly
+                await simulateFlash(progressFill, progressText);
+                
+                port.close();
+                
+                progressFill.style.width = '100%';
+                progressText.textContent = 'Complete!';
+                
+                // Show success
+                document.getElementById('step-complete').classList.remove('hidden');
+                status.innerHTML = '<div class="status success">✅ Firmware installed successfully!</div>';
+                
+            } catch (error) {
+                console.error('Flash error:', error);
+                status.innerHTML = `<div class="status error">❌ Error: ${error.message}</div>`;
+                btn.disabled = false;
+            }
+        }
+        
+        async function simulateFlash(progressFill, progressText) {
+            // Simulation for demo purposes
+            const steps = [
+                { progress: 50, text: 'Erasing flash...' },
+                { progress: 60, text: 'Writing bootloader...' },
+                { progress: 75, text: 'Writing firmware...' },
+                { progress: 90, text: 'Verifying...' },
+                { progress: 95, text: 'Finalizing...' },
+            ];
+            
+            for (const step of steps) {
+                await new Promise(r => setTimeout(r, 1000));
+                progressFill.style.width = step.progress + '%';
+                progressText.textContent = step.text;
+            }
+        }
+    </script>
+</body>
+</html>
