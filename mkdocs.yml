@@ -1,0 +1,136 @@
+site_name: WakeLink Documentation
+site_url: https://wakelink-project.org/docs
+site_description: Wake-on-LAN over Internet with end-to-end encryption
+site_author: WakeLink Team
+repo_url: https://github.com/wakelinkdev/wakelink
+repo_name: wakelinkdev/wakelink
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/logo.svg
+  favicon: assets/favicon.ico
+
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+
+extra:
+  version:
+    provider: mike
+    default: stable
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/wakelinkdev/wakelink
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/wakelink
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Introduction: getting-started/index.md
+    - Requirements: getting-started/requirements.md
+    - Quick Start: getting-started/quickstart.md
+    - Architecture: getting-started/architecture.md
+  - Firmware:
+    - Overview: firmware/index.md
+    - Flashing Guide: firmware/flashing.md
+    - Configuration: firmware/configuration.md
+    - OTA Updates: firmware/ota.md
+    - Troubleshooting: firmware/troubleshooting.md
+  - Server:
+    - Overview: server/index.md
+    - Docker Deployment: server/docker.md
+    - Configuration: server/configuration.md
+    - SSL/TLS Setup: server/ssl.md
+    - Monitoring: server/monitoring.md
+    - Backup & Recovery: server/backup.md
+  - Clients:
+    - Overview: clients/index.md
+    - Python CLI: clients/cli.md
+    - Android App: clients/android.md
+    - API Reference: clients/api.md
+  - Security:
+    - Overview: security/index.md
+    - EWSP Protocol: security/ewsp.md
+    - EWSP Specification v1.0: security/EWSP_PROTOCOL_SPEC_v1.0.md
+    - Encryption: security/encryption.md
+    - Best Practices: security/best-practices.md
+  - Reference:
+    - Error Codes: reference/error-codes.md
+    - Configuration: reference/configuration.md
+    - FAQ: reference/faq.md
+    - Changelog: reference/changelog.md
+
+copyright: Copyright &copy; 2024-2026 WakeLink Project
