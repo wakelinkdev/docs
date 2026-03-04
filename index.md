@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # WakeLink Documentation
 
 **Wake-on-LAN over Internet with End-to-End Encryption**
@@ -114,4 +116,4 @@ WakeLink is open source! Contributions are welcome.
 
 ---
 
-<small>WakeLink v1.0.0 • Licensed under MIT</small>
+<small>WakeLink v1.0.0 • Licensed under MIT</small>

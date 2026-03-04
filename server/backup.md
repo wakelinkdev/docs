@@ -1,3 +1,5 @@
+[🇬🇧 English](backup.md) | [🇷🇺 Русский](backup_RU.md)
+
 # Backup & Recovery
 
 Protect your WakeLink data with regular backups.

@@ -1,3 +1,5 @@
+[🇬🇧 English](ssl.md) | [🇷🇺 Русский](ssl_RU.md)
+
 # SSL/TLS Setup
 
 Secure your WakeLink server with TLS certificates.

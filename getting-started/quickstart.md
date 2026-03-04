@@ -1,3 +1,5 @@
+[🇬🇧 English](quickstart.md) | [🇷🇺 Русский](quickstart_RU.md)
+
 # Quick Start
 
 Get your first WakeLink device online in 5 minutes.

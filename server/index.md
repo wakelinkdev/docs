@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # Server Overview
 
 Self-host your own WakeLink relay server for complete control over your data.

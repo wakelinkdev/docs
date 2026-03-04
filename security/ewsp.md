@@ -1,3 +1,5 @@
+[🇬🇧 English](ewsp.md) | [🇷🇺 Русский](ewsp_RU.md)
+
 # EWSP Protocol
 
 **Encrypted Wake Signaling Protocol** — The secure communication protocol used by WakeLink.

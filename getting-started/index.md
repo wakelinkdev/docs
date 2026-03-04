@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # Introduction
 
 WakeLink enables secure Wake-on-LAN over the Internet using end-to-end encrypted communication between your devices.

@@ -1,3 +1,5 @@
+[🇬🇧 English](error-codes.md) | [🇷🇺 Русский](error-codes_RU.md)
+
 # Error Codes Reference
 
 Complete list of WakeLink error codes and their meanings.

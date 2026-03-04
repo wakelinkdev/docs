@@ -1,3 +1,5 @@
+[🇬🇧 English](configuration.md) | [🇷🇺 Русский](configuration_RU.md)
+
 # Firmware Configuration
 
 Configure your WakeLink device settings.

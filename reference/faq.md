@@ -1,3 +1,5 @@
+[🇬🇧 English](faq.md) | [🇷🇺 Русский](faq_RU.md)
+
 # FAQ
 
 Frequently asked questions about WakeLink.

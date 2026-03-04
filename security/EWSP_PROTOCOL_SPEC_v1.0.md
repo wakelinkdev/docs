@@ -1,3 +1,5 @@
+[🇬🇧 English](EWSP_PROTOCOL_SPEC_v1.0.md) | [🇷🇺 Русский](EWSP_PROTOCOL_SPEC_v1.0_RU.md)
+
 # EWSP Protocol Specification v1.0
 
 **Encrypted Wake-on-LAN Secure Protocol**

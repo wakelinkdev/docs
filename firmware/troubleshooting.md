@@ -1,3 +1,5 @@
+[🇬🇧 English](troubleshooting.md) | [🇷🇺 Русский](troubleshooting_RU.md)
+
 # Troubleshooting
 
 Common issues and solutions for WakeLink firmware.

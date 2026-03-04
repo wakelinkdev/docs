@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # Clients Overview
 
 Multiple ways to interact with WakeLink.

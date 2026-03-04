@@ -1,3 +1,5 @@
+[🇬🇧 English](configuration.md) | [🇷🇺 Русский](configuration_RU.md)
+
 # Server Configuration
 
 Complete reference for WakeLink server configuration options.

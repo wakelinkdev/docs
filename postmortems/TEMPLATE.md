@@ -1,3 +1,5 @@
+[🇬🇧 English](TEMPLATE.md) | [🇷🇺 Русский](TEMPLATE_RU.md)
+
 # Post-Mortem: Template Example
 
 **Date:** YYYY-MM-DD

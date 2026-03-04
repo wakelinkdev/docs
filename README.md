@@ -1,3 +1,5 @@
+[🇬🇧 English](README.md) | [🇷🇺 Русский](README_RU.md)
+
 # 🔗 WakeLink
 
 <p align="center">
@@ -399,4 +401,4 @@ jobs:
 </p>
 <p align="center">
   <strong>Made with ❤️ by deadboizxc</strong>
-</p>
+</p>

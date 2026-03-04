@@ -1,3 +1,5 @@
+[🇬🇧 English](ota.md) | [🇷🇺 Русский](ota_RU.md)
+
 # OTA Updates
 
 Update WakeLink firmware remotely without physical access.

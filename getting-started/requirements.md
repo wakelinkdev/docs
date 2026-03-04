@@ -1,3 +1,5 @@
+[🇬🇧 English](requirements.md) | [🇷🇺 Русский](requirements_RU.md)
+
 # Requirements
 
 Before setting up WakeLink, ensure you have the following hardware and software.

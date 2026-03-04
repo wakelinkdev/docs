@@ -1,3 +1,5 @@
+[🇬🇧 English](encryption.md) | [🇷🇺 Русский](encryption_RU.md)
+
 # Encryption Details
 
 Technical details of cryptographic primitives used in WakeLink.

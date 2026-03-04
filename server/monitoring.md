@@ -1,3 +1,5 @@
+[🇬🇧 English](monitoring.md) | [🇷🇺 Русский](monitoring_RU.md)
+
 # Monitoring
 
 Set up monitoring and alerting for your WakeLink server.

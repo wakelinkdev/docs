@@ -1,3 +1,5 @@
+[🇬🇧 English](configuration.md) | [🇷🇺 Русский](configuration_RU.md)
+
 # Configuration Reference
 
 Complete configuration options for all WakeLink components.

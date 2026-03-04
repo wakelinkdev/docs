@@ -1,3 +1,5 @@
+[🇬🇧 English](best-practices.md) | [🇷🇺 Русский](best-practices_RU.md)
+
 # Security Best Practices
 
 Recommendations for secure WakeLink deployment.

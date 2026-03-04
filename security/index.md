@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # Security Overview
 
 WakeLink is designed with security as a core principle.

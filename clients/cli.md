@@ -1,3 +1,5 @@
+[🇬🇧 English](cli.md) | [🇷🇺 Русский](cli_RU.md)
+
 # Python CLI
 
 Full-featured command-line interface for WakeLink.

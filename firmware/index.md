@@ -1,3 +1,5 @@
+[🇬🇧 English](index.md) | [🇷🇺 Русский](index_RU.md)
+
 # Firmware Overview
 
 The WakeLink firmware runs on ESP8266 and ESP32 microcontrollers, enabling secure Wake-on-LAN over the Internet.

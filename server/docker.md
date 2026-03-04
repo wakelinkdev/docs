@@ -1,3 +1,5 @@
+[🇬🇧 English](docker.md) | [🇷🇺 Русский](docker_RU.md)
+
 # Docker Deployment
 
 Deploy WakeLink server with Docker Compose.

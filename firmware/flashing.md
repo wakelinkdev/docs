@@ -1,3 +1,5 @@
+[🇬🇧 English](flashing.md) | [🇷🇺 Русский](flashing_RU.md)
+
 # Flashing Guide
 
 Install WakeLink firmware on your ESP8266 or ESP32 board.

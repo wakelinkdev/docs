@@ -1,3 +1,5 @@
+[🇬🇧 English](changelog.md) | [🇷🇺 Русский](changelog_RU.md)
+
 # Changelog
 
 All notable changes to WakeLink project.

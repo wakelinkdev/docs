@@ -1,3 +1,5 @@
+[🇬🇧 English](api.md) | [🇷🇺 Русский](api_RU.md)
+
 # REST API Reference
 
 Complete API documentation for WakeLink server.

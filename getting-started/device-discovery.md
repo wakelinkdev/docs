@@ -1,3 +1,5 @@
+[🇬🇧 English](device-discovery.md) | [🇷🇺 Русский](device-discovery_RU.md)
+
 # WakeLink Device Discovery
 
 WakeLink devices support three methods for discovery and connection:

@@ -1,3 +1,5 @@
+[🇬🇧 English](android.md) | [🇷🇺 Русский](android_RU.md)
+
 # Android App
 
 Wake your devices from anywhere with the WakeLink Android app.

@@ -1,3 +1,5 @@
+[🇬🇧 English](HOTFIX.md) | [🇷🇺 Русский](HOTFIX_RU.md)
+
 # WakeLink Hotfix Process
 
 > Emergency fixes for production-critical issues in WakeLink v1.x
@@ -412,4 +414,4 @@ Before deploying any hotfix:
 ---
 
 *Last updated: 2026-02-08*
-*Process owner: Senior Developer*
+*Process owner: Senior Developer*

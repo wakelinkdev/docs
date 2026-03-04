@@ -1,3 +1,5 @@
+[🇬🇧 English](architecture.md) | [🇷🇺 Русский](architecture_RU.md)
+
 # Architecture
 
 Understanding how WakeLink components work together.
